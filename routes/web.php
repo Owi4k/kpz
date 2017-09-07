@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', "HomeController@index");
+
+Auth::routes();
+
+Route::get('/add_article', function() {
+    return view('add_article');
 });
+
+Route::post('/add_article_db', "ArticleController@addArticle");

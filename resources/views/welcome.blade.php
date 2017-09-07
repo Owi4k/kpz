@@ -78,16 +78,21 @@
             @endif
 
             <div class="content">
+                @if(Auth::check())
                 <div class="title m-b-md">
-                    Laravel
+                    <a href="/add_article">Add article</a>
                 </div>
+                @endif
+                @foreach($articles as $article)
+                <div class="panel-heading">{{$article->title}}</div>
 
+                <div class="panel-body">
+                    <p>{{$article->subtitle}}</p>
+                    <p>{{$article->text}}</p>
+                </div>
+                @endforeach
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    {{$articles->render()}}
                 </div>
             </div>
         </div>
